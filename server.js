@@ -1,3 +1,4 @@
+const { request, response } = require('express')
 const express = require('express')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
@@ -19,6 +20,23 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
+app.get('/', (request, response)=> {
+    db.collection('weed').find().toArray()
+    .then(data => {
+        response.render('index.ejs', {info : data})
+    })
+    .catch(error => console.error(error))
+})
+
+app.post('/addRapper', (request, response) => {
+    db.collection('weed').insertOne({budName: request.body.budName,
+    type: request.body.typeOf})
+    .then(result => {
+        console.log('Weed added')
+        response.redirect('/')
+    })
+    .catch(error => console.error(error))
+})
 
 
 
