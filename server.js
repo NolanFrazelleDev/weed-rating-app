@@ -21,14 +21,14 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 app.get('/', (request, response)=> {
-    db.collection('weed').find().toArray()
+    db.collection('weed').find().sort({}).toArray()
     .then(data => {
-        response.render('index.ejs', {info : data})
+        response.render('index.ejs', { info : data })
     })
     .catch(error => console.error(error))
 })
 
-app.post('/addRapper', (request, response) => {
+app.post('/addBud', (request, response) => {
     db.collection('weed').insertOne({budName: request.body.budName,
     type: request.body.typeOf})
     .then(result => {
