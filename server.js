@@ -1,4 +1,3 @@
-const { request, response } = require('express')
 const express = require('express')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
@@ -38,7 +37,15 @@ app.post('/addBud', (request, response) => {
     .catch(error => console.error(error))
 })
 
+app.delete('/deleteBud', (request, response) => {
+    db.collection('weed').deleteOne({budName: request.body.budName})
+    .then(result => {
+        console.log('Bud has been Deleted')
+        response.json('Bud has been Deleted')
+    })
+    .catch(error => console.error(error))
 
+})
 
 
 
