@@ -17,8 +17,8 @@ async function deleteBud(){
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-              'budName': sName,
-              'birthNameS': bName
+              'budNameS': sName,
+              'type': bName
             })
           })
         const data = await response.json()

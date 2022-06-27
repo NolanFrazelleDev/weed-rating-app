@@ -29,7 +29,7 @@ app.get('/', (request, response)=> {
 
 app.post('/addBud', (request, response) => {
     db.collection('weed').insertOne({budName: request.body.budName,
-    type: request.body.typeOf})
+    type: request.body.typeOf, preference: request.body.preference})
     .then(result => {
         console.log('Weed added')
         response.redirect('/')
@@ -38,7 +38,7 @@ app.post('/addBud', (request, response) => {
 })
 
 app.delete('/deleteBud', (request, response) => {
-    db.collection('weed').deleteOne({budName: request.body.budName})
+    db.collection('weed').deleteOne({budName: request.body.budNameS})
     .then(result => {
         console.log('Bud has been Deleted')
         response.json('Bud has been Deleted')

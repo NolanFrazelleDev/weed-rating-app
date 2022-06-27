@@ -22,10 +22,9 @@
     <ul class="weed">
     <% for(let i=0; i < info.length; i++) {%>
         <li class="weed">
-            <span><%= info[i].budName %></span>
-            <span><%= info[i].typeOf %></span>
-            <span><%= info[i].likes %></span>
-            <span class='fa fa-thumbs-up'></span>
+            <span><%= info[i].budName %> //</span>
+            <span><%= info[i].type %> //</span>
+            <span><%= info[i].preference %> out of 10 //</span>
             <span class='fa fa-trash'></span>
         </li>
     <% } %>
@@ -36,6 +35,7 @@
     <form action="/addBud" method="POST">
         <input type="text" placeholder="Bud Name" name="budName">
         <input type="text" placeholder="Type of Bud" name="typeOf">
+        <input type="text" placeholder="Personal Preference" name="preference">
         <input type="submit">
     </form>
     
