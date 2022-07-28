@@ -38,7 +38,7 @@ app.post('/addBud', (request, response) => {
 })
 
 app.delete('/deleteBud', (request, response) => {
-    db.collection('weed').deleteOne({budName: request.body.budNameS})
+    db.collection('weed').deleteOne({budName: request.body.budNameS, type: request.body.typeOf})
     .then(result => {
         console.log('Bud has been Deleted')
         response.json('Bud has been Deleted')
